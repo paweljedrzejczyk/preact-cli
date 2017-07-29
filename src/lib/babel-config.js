@@ -1,15 +1,17 @@
-export default (env, options={}) => {
+export default (env={}, options={}) => {
 	const isProd = env && env.production;
-
+	
 	return {
 		babelrc: false,
 		presets: [
 			[require.resolve('babel-preset-env'), {
-				loose: true,
-				uglify: true,
-				modules: options.modules || false,
-				targets: {
-					browsers: options.browsers
+				loose: env.test ? false : true,
+				uglify: env.test ? false : true,
+				modules: env.test ? 'commonjs' : options.modules || false,
+				targets: env.test ? {
+					node: 'current',
+				} : {
+					browsers: options.browsers,
 				},
 				exclude: [
 					'transform-regenerator',

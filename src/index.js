@@ -5,6 +5,7 @@ import create from './commands/create';
 import build from './commands/build';
 import watch from './commands/watch';
 import serve from './commands/serve';
+import test from './commands/test';
 import installHooks from './lib/output-hooks';
 import pkg from '../package.json';
 import logo from './lib/logo';
@@ -21,6 +22,7 @@ yargs
 	.command(build)
 	.command(watch)
 	.command(serve)
+	.command(test)
 	.option('cwd', {
 		description: 'A directory to use instead of $PWD.',
 		defaultDescription: '.'
